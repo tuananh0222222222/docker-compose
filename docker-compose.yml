@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx 
+    container_name: nginxx
+    hostname: nginxz
+    restart: always
+    ports:
+      - "8900:80"
+
+    volumes:
+      - C:\desktop\nginx:/usr/share/nginx/html
+ 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đồng hồ đếm ngược</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="countdown"></div>
+    <script>
+      // Hàm tính thời gian đếm ngược
+      function countdown() {
+        var endDate = new Date("2023-07-31 00:00:00"); // Đặt ngày kết thúc đếm ngược ở đây
+        var now = new Date().getTime();
+        var timeLeft = endDate - now;
+
+        // Tính toán số giờ, phút, giây còn lại
+        var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Hiển thị thời gian đếm ngược trong thẻ div có id "countdown"
+        var countdownElement = document.getElementById("countdown");
+        countdownElement.innerHTML =
+          days +
+          " ngày, " +
+          hours +
+          " giờ, " +
+          minutes +
+          " phút, " +
+          seconds +
+          " giây";
+
+        // Khi đến thời gian kết thúc, dừng đồng hồ đếm ngược
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          countdownElement.innerHTML = "Đếm ngược đã kết thúc!";
+        }
+      }
+
+      // Gọi hàm countdown() mỗi giây
+      var interval = setInterval(countdown, 1000);
+    </script>
+  </body>
+</html>
